@@ -13,6 +13,12 @@ public class CadastroClienteService {
 	ClienteRepository clienteRepository;
 
 	public Cliente salvar(Cliente cliente) {
+
+		Cliente clienteExistente = clienteRepository.findByEmail(cliente.getEmail());
+		if (clienteExistente != null && !clienteExistente.equals(cliente)) {
+			throw new Exception("Já existe um cliente cadastrado com este e-mail");
+		}
+
 		return clienteRepository.save(cliente);
 	}
 
