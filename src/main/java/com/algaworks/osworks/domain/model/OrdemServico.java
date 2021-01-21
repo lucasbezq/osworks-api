@@ -12,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class OrdemServico {
 
@@ -27,8 +30,11 @@ public class OrdemServico {
 
 	@Enumerated(EnumType.STRING)
 	private StatusOrdemServico status;
+
+	@JsonProperty(access = Access.READ_ONLY)
 	private LocalDateTime dataAbertura;
-	
+
+	@JsonProperty(access = Access.READ_ONLY)
 	@Column(name = "date_finalizacao")
 	private LocalDateTime dataFinalizacao;
 
