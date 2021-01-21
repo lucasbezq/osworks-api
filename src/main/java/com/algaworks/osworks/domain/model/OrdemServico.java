@@ -3,14 +3,16 @@ package com.algaworks.osworks.domain.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class OrdemServico {
 
 	@Id
@@ -26,6 +28,8 @@ public class OrdemServico {
 	@Enumerated(EnumType.STRING)
 	private StatusOrdemServico status;
 	private LocalDateTime dataAbertura;
+	
+	@Column(name = "date_finalizacao")
 	private LocalDateTime dataFinalizacao;
 
 	public Long getId() {
