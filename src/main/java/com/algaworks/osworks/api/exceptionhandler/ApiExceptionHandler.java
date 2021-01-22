@@ -1,6 +1,7 @@
 package com.algaworks.osworks.api.exceptionhandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		var problema = new Problema();
 		problema.setStatus(status.value());
 		problema.setTitulo(ex.getMessage());
-		problema.setDataHora(LocalDateTime.now());
+		problema.setDataHora(OffsetDateTime.now());
 
 		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
 	}
@@ -51,7 +52,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		var problema = new Problema();
 		problema.setStatus(400);
 		problema.setTitulo("Um ou mais campos estão inválidos. Faça o o preenchimento" + "correto e tente novamente");
-		problema.setDataHora(LocalDateTime.now());
+		problema.setDataHora(OffsetDateTime.now());
 		problema.setCampos(campos);
 
 		return super.handleExceptionInternal(ex, problema, headers, status, request);
