@@ -7,24 +7,23 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class OrdemServicoInput {
-	
+
 	@NotBlank
-	private String descricaol;
-	
+	private String descricao;
+
 	@NotNull
 	private BigDecimal preco;
-	
+
 	@Valid
 	@NotNull
-	private Long clienteId;
 	private ClienteIdInput cliente;
 
-	public String getDescricaol() {
-		return descricaol;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaol(String descricaol) {
-		this.descricaol = descricaol;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public BigDecimal getPreco() {
@@ -33,14 +32,6 @@ public class OrdemServicoInput {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
-	}
-
-	public Long getClienteId() {
-		return clienteId;
-	}
-
-	public void setClienteId(Long clienteId) {
-		this.clienteId = clienteId;
 	}
 
 	public ClienteIdInput getCliente() {
