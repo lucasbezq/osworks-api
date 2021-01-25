@@ -2,10 +2,20 @@ package com.algaworks.osworks.model;
 
 import java.math.BigDecimal;
 
-public class OrdemServicoInput {
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+public class OrdemServicoInput {
+	
+	@NotBlank
 	private String descricaol;
+	
+	@NotNull
 	private BigDecimal preco;
+	
+	@Valid
+	@NotNull
 	private Long clienteId;
 	private ClienteIdInput cliente;
 

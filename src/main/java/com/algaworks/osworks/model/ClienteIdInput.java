@@ -1,7 +1,10 @@
 package com.algaworks.osworks.model;
 
-public class ClienteIdInput {
+import javax.validation.constraints.NotNull;
 
+public class ClienteIdInput {
+	
+	@NotNull
 	private Long id;
 
 	public Long getId() {

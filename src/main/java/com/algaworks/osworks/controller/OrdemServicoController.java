@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.algaworks.osworks.domain.model.OrdemServico;
 import com.algaworks.osworks.domain.repository.OrdemServicoRepository;
 import com.algaworks.osworks.domain.service.GestaoOrdemServicoService;
+import com.algaworks.osworks.model.OrdemServicoInput;
 import com.algaworks.osworks.model.OrdemServicoModel;
 
 @RestController
@@ -38,7 +39,9 @@ public class OrdemServicoController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public OrdemServicoModel criar(@Valid @RequestBody OrdemServico ordemServico) {
+	public OrdemServicoModel criar(@Valid @RequestBody OrdemServicoInput ordemServicoInput) {
+		OrdemServico ordemServico = toEntity(ordemServicoInput);
+
 		return toModel(gestaoOrdemServico.criar(ordemServico));
 	}
 
@@ -63,7 +66,10 @@ public class OrdemServicoController {
 	}
 
 	private List<OrdemServicoModel> toCollectionModel(List<OrdemServico> ordensServico) {
-		return ordensServico.stream().map(ordemServico -> toModel(ordemServico))
-				.collect(Collectors.toList());
+		return ordensServico.stream().map(ordemServico -> toModel(ordemServico)).collect(Collectors.toList());
+	}
+
+	private OrdemServico toEntity(OrdemServicoInput ordemServicoInput) {
+		return modelMapper.map(ordemServicoInput, OrdemServico.class);
 	}
 }
